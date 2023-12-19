@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+	<style>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</style>
+	
+	{% if cap==9999 %}
+		<h3 style="text-align:center">CAPACITY OF VACCINATION PER DAY IS NOT SET<h3>
+	{% else %}
+		<h3 style="text-align:center">CAPACITY OF VACCINATION PER DAY IS {{cap}}<h3>
+	{% endif %}	
+
+	{% set sizz = namespace(value=0) %}
+	{% set day = namespace(value=1) %}
+	{% set xx=0 %}
+
+	{% for DATA in data1 %}
+		<br><br>
+		<div style="overflow-x: auto;">
+
+		<table id="customers2">
+		
+			<col style="width: 40%;" /> 
+			<col style="width: 60%;" />
+
+			<tr>
+				<th colspan="2" style="text-align:center">Vaccination Day - {{day.value}}</th>
+			</tr>
+
+			<tr>
+				<td>Name</td>
+				<td>Aadhaar Number</td>
+			</tr>
+		
+			<tr>
+				<td>{{DATA[xx]}}</td>
+				{% set xx=xx+1 %}
+				<td>{{DATA[xx]}}</td>
+			</tr>
+			{% set xx=xx+1 %}
+		
+
+		</table>
+		{% set sizz.value = sizz.value+1 %}
+
+		{% if sizz.value>=cap %}
+			{% set day.value = day.value+1 %}
+			{% set sizz.value = 0 %}	
+		{% endif %}
+
+	{% endfor %}
+
+	<style>
+
+		#customers2 {
+		  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		  border-collapse: collapse;
+		 
+		  
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+
+		#customers2 td, #customers th {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		  text-align: center;
+		}
+
+		#customers2 tr:nth-child(even){background-color:  #f2f2f2;}
+
+		#customers2 tr:hover {background-color: #ddd;}
+
+		#customers2 th {
+		  padding-top: 12px;
+		  padding-bottom: 12px;
+		  text-align: center;
+		  background-color: #4CAF50;
+		  color: white;
+		}
+
+
+
+            table, 
+            th, 
+            td { 
+                border: 1px solid black; 
+                border-collapse: collapse; 
+            } 
+  
+            table { 
+                width: 50%; 
+            } 
+  
+            table.fixed { 
+                table-layout: fixed; 
+            } 
+            table.fixed td { 
+                overflow: hidden; 
+            } 
+
+
+	</style>
+
+
+{% endblock %}

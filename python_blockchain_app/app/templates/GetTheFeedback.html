@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<style>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</style>
+	
+	<br><br><br>
+	<table id="customers2">
+	
+	<tr>
+		<th colspan="2" style="text-align:center">Positive Feedback</th>
+	</tr>	
+
+	{% for pos in pos %}
+		<tr>
+			<td>{{pos}}</td>
+		</tr>
+	{% endfor %}
+
+	</table>
+	<br><br><br>
+
+	<table id="customers2">
+	
+	<tr>
+		<th colspan="2" style="text-align:center">Negative Feedback</th>
+	</tr>	
+
+	{% for neg in neg %}
+		<tr>
+			<td>{{neg}}</td>
+		</tr>
+	{% endfor %}
+
+	</table>
+	
+	
+
+<style>
+		#customers2 {
+		  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		  border-collapse: collapse;
+		 
+		  
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+
+		#customers2 td, #customers th {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		  text-align: center;
+		}
+
+		#customers2 tr:nth-child(even){background-color: #f2f2f2;}
+
+		#customers2 tr:hover {background-color: #ddd;}
+
+		#customers2 th {
+		  padding-top: 12px;
+		  padding-bottom: 12px;
+		  text-align: center;
+		  background-color: #4CAF50;
+		  color: white;
+		}
+</style>
+
+
+
+
+{% endblock %}

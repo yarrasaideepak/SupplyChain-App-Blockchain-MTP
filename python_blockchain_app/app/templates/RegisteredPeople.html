@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+	<style>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</style>
+	
+	
+	{% for DATA in data %}
+	<br><br><br>
+	<div style="overflow-x: auto;">
+	<table id="customers2">
+		
+		<col style="width: 40%;" /> 
+		<col style="width: 60%;" />
+
+		<tr>
+			<th colspan="2" style="text-align:center">Registered User Data</th>
+		</tr>
+
+		<tr>
+			<td>First Name:</td>
+			<td>{{DATA[0]}}</td>
+		</tr>
+		<tr>
+			<td>Last Name:</td>
+			<td>{{DATA[1]}}</td>
+		</tr>
+		<tr>
+			<td>Date of Birth:</td>
+			<td>{{DATA[2]}}</td>
+		</tr>
+		<tr>
+			<td>Marital Status:</td>
+			<td>{{DATA[3]}}</td>
+		</tr>
+		<tr>
+			<td>Gender:</td>
+			<td>{{DATA[4]}}</td>
+		</tr>
+		<tr>
+			<td>Aadhaar Number:</td>
+			<td>{{DATA[5]}}</td>
+		</tr>
+		<tr>
+			<td>Email Address:</td>
+			<td>{{DATA[6]}}</td>
+		</tr>
+		<tr>
+			<td>Phone Number:</td>
+			<td>{{DATA[7]}}</td>
+		</tr>
+		<tr>
+			<td>Address:</td>
+			<td>{{DATA[8]}}</td>
+		</tr>
+		<tr>
+			<td>Postal Code:</td>
+			<td>{{DATA[9]}}</td>
+		</tr>
+		
+	</table>
+	</div>
+	
+	{% endfor %}
+	
+	<style>
+
+		#customers2 {
+		  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		  border-collapse: collapse;
+		 
+		  
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+
+		#customers2 td, #customers th {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		  text-align: center;
+		}
+
+		#customers2 tr:nth-child(even){background-color:  #f2f2f2;}
+
+		#customers2 tr:hover {background-color: #ddd;}
+
+		#customers2 th {
+		  padding-top: 12px;
+		  padding-bottom: 12px;
+		  text-align: center;
+		  background-color: #4CAF50;
+		  color: white;
+		}
+
+
+
+            table, 
+            th, 
+            td { 
+                border: 1px solid black; 
+                border-collapse: collapse; 
+            } 
+  
+            table { 
+                width: 50%; 
+            } 
+  
+            table.fixed { 
+                table-layout: fixed; 
+            } 
+            table.fixed td { 
+                overflow: hidden; 
+            } 
+
+
+	</style>
+
+
+{% endblock %}

@@ -1,0 +1,89 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+</html>
+<body>
+{% block content %}
+		
+<div class="tab">
+	<button class="tablinks" onclick="openCity(event, 'Enterprise')">Enterprise</button>
+	<button class="tablinks" onclick="openCity(event, 'Lot_release')">Lot Release</button>
+	<button class="tablinks" onclick="openCity(event, 'CDC')">CDC</button>
+</div>
+	
+<div style="background-image: url('Enterprise.jpg');" id="Enterprise" class="tabcontent">
+		<h1 style="text-align:center">Enterprise Details</h1>
+	
+		<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Product Name:</b></label>
+		<input type="text" style="position:absolute;margin-left: 30%;" placeholder="" name="PdtName" id="PdtName" required>
+		
+		<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Packing Form:</b></label>
+		<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="PkgForm" id="PkgForm" required>
+		
+		<br></br><br></br>
+</div>
+
+<div style="background-image: url('Lot_Release.jpg');" id="Lot_release" class="tabcontent">
+	<h1 style="text-align:center">Lot Release Details</h1>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Product Name</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="IPdtName" id="IPdtName" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Dosage Form</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="IDosageForm" id="IDosageForm" required>
+	
+	<br></br><br></br>
+</div>
+
+<div style="background-image: url('CDC.jpg');" id="CDC" class="tabcontent">
+	
+	<h1 style="text-align:center">Inoculation Details</h1>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>ID of Vaccin Recipient:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="CIdOfRecp" id="CIdOfRecp" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Gender of Recipient:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="CGenderOfRecp" id="CGenderOfRecp" required>
+	<br></br><br></br>
+
+</div>
+
+
+	
+	<form action="/submit" id="textform" method="post">
+		
+		<textarea name="content" rows="4" cols="50" placeholder="Just write whatever you want to..."></textarea>
+	    <br>
+	    <input type="text" name="author" placeholder="Your name">
+	    <input type="text" name="author2" placeholder="Your namedd2">
+	    <input type="submit" value="Post">
+		
+		
+	</form>
+	
+	<a href="{{node_address}}/mine" target="_blank"><button>Request to mine</button></a>
+	<a href="/"><button>Resync</button></a>
+
+	<div style="margin: 20px;">
+	
+
+	<table>
+        <tr>
+          <th>Author1</th>
+          <th>{{post.author}}</th>
+        </tr>
+        <tr>
+          <td>Author2</td>
+          <td>{{post.author2}}</td>
+        </tr>
+        <tr>
+          <td>Content</td>
+          <td>{{post.content}}</td>
+        </tr>
+    </table>
+	
+	{% endfor %}
+</body>
+</html>
+{% endblock %}

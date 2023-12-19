@@ -1,0 +1,571 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+body {font-family: Arial;}
+/* Style the tab */
+
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #42D535;
+  color: white;
+  width: 25%;
+  font-weight: bold;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #8E3535;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #1C48C1;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+</style>
+
+
+<div class="tab">
+	<button class="tablinks" onclick="openCity(event, 'Enterprise')">Enterprise</button>
+	<button class="tablinks" onclick="openCity(event, 'Lot_release')">Lot Release</button>
+	<button class="tablinks" onclick="openCity(event, 'CDC')">CDC</button>
+	<button class="tablinks" onclick="openCity(event, 'Data_Uploaded')">Data Uploaded</button>
+</div>
+
+<form action="/submit" id="textform" method="post">
+
+<div style="background-color: lightblue;" id="Enterprise" class="tabcontent">
+
+	<h1 style="text-align:center">Enterprise Details</h1>	
+	<br></br><br></br>
+	
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Product Name:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder="" name="content"  required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Packing Form:</b></label>
+    <input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="author"  required>
+	
+	<br></br><br></br>
+	
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Batch Number:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder="" name="BatchNo" id="BatchNo" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Production Date:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="PdtDate" id="PdtDate" required>
+	
+	<br></br><br></br>
+	
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Validity Period:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder="" name="ValPrd" id="ValPrd" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Date of Packing:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="PkgDate" id="PkgDate" required>
+	
+	<br></br><br></br>
+	
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Packaging Time:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder="" name="PkgTime" id="PkgTime" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Packaging In Charge:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="PkgInchargeName" id="PkgInchargeName" required>
+	
+	<br></br><br></br>
+	
+		<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Packaging Operator:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder="" name="PkgOpr" id="PkgOpr" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Packaging Material Name:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="PkgMtrlName" id="PkgMtrlName" required>
+	
+	<br></br><br></br>
+	
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Packaging Material Batch:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder="" name="PkgMtrlNo" id="PkgMtrlNo" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Inspection Record</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="InspRec" id="InspRec" required>
+	
+	<br></br><br></br>
+	
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Packing Operation Report:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="PkgOpsDetails" id="" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Abnormal Reports:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="AbnormalReport" id="AbnormalReport" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Investigator Name:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="InvestigatorName" id="InvestigatorName" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Final Checking Report:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="FinCheckRep" id="FinCheckRep" required>
+	<br></br><br></br>
+	
+	
+</div>
+
+<div style="background-color: #C8F145;" id="Lot_release" class="tabcontent">
+	<h1 style="text-align:center">Lot Release Details</h1>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Product Name</b></label>
+	<input type="text" style="position:absolute;margin-left: 35%;" placeholder=""  name="IPdtName"  required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Dosage Form</b></label>
+	<input type="text" style="position:absolute;margin-left: 80%;" placeholder=""  name="IDosageForm"  required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Specification:</b></label>
+	<input type="text" style="position:absolute;margin-left: 35%;" placeholder=""  name="ISpec" id="ISpec" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Batch Number:</b></label>
+	<input type="text" style="position:absolute;margin-left: 80%;" placeholder=""  name="IBatchNo" id="IBatchNo" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Quality Standard:</b></label>
+	<input type="text" style="position:absolute;margin-left: 35%;" placeholder=""  name="IQualStd" id="IQualStd" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Inspection Procedure:</b></label>
+	<input type="text" style="position:absolute;margin-left: 80%;" placeholder=""  name="IInspProc" id="IInspProc" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Inspection Equipments:</b></label>
+	<input type="text" style="position:absolute;margin-left: 35%;" placeholder=""  name="IInspEquip" id="IInspEquip" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Batch Number of Test Solutions:</b></label>
+	<input type="text" style="position:absolute;margin-left: 80%;" placeholder=""  name="IBtchNoOfSol" id="IBtchNoOfSol" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Batch Number of Test Medium:</b></label>
+	<input type="text" style="position:absolute;margin-left: 35%;" placeholder=""  name="IBtchNoOfMed" id="IBtchNoOfMed" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Batch Number of Source:</b></label>
+	<input type="text" style="position:absolute;margin-left: 80%;" placeholder=""  name="IBtchNoOfSrc" id="IBtchNoOfSrc" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Batch No of Standard Product:</b></label>
+	<input type="text" style="position:absolute;margin-left: 35%;" placeholder=""  name="IBtchNoOfStdPdt" id="IBtchNoOfStdPdt" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Information of Animals:</b></label>
+	<input type="text" style="position:absolute;margin-left: 80%;" placeholder=""  name="IInfAnimals" id="IInfAnimals" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Inspection Process:</b></label>
+	<input type="text" style="position:absolute;margin-left: 35%;" placeholder=""  name="IInspProcess" id="IInspProcess" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Inspection Results:</b></label>
+	<input type="text" style="position:absolute;margin-left: 80%;" placeholder=""  name="IInspRes" id="IInspRes" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Date of Inspection:</b></label>
+	<input type="text" style="position:absolute;margin-left: 35%;" placeholder=""  name="IDateOfInsp" id="IDateOfInsp" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Inspector Details:</b></label>
+	<input type="text" style="position:absolute;margin-left: 80%;" placeholder=""  name="IInspDetails" id="IInspDetails" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Name of Reviewer:</b></label>
+	<input type="text" style="position:absolute;margin-left: 35%;" placeholder=""  name="IRevName" id="IRevName" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Date of Review:</b></label>
+	<input type="text" style="position:absolute;margin-left: 80%;" placeholder=""  name="IDateOfRev" id="IDateOfRev" required>
+	<br></br><br></br>
+	
+
+</div>
+
+<div style="background-color: #4BAFC0;" id="CDC" class="tabcontent">
+	
+	<h1 style="text-align:center">Inoculation Details</h1>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>ID of Vaccin Recipient:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="CIdOfRecp"  required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Gender of Recipient:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="CGenderOfRecp"  required>
+	<br></br><br></br>
+	
+	
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Age of Vaccine Recipient:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="CAgeOfRecp" id="CAgeOfRecp" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Product Name:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="CPdtName" id="CPdtName" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Batch Number:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="CBatchNo" id="CBatchNo" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Inoculation Address</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="CInocAdd" id="CInocAdd" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Time of Inoculation:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="CInocTime" id="CInocTime" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Date of Inoculation:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="CInocDate" id="CInocDate" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Inoculation Dose:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="CInocDose" id="CInocDose" required>
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Inoculation Department:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="CInocDept" id="CInocDept" required>
+	
+	<br></br><br></br>
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Inoculation Doctor:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="CInocDoc" id="CInocDoc" required>
+	
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>State:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="CState" id="CState" required>
+	
+
+	<br></br><br></br>
+	
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>District:</b></label>
+	<input type="text" style="position:absolute;margin-left: 30%;" placeholder=""  name="CDist" id="CDist" required>
+	
+	
+	<label style="position:absolute;margin-left:55%;font-size: 25px;"><b>Mandal:</b></label>
+	<input type="text" style="position:absolute;margin-left: 75%;" placeholder=""  name="CMandal" id="CMandal" required>
+	
+	<br></br><br></br>
+	
+	<label style="position:absolute;margin-left:10%;font-size: 25px;"><b>Quantity:</b></label>
+	<input type="number" style="position:absolute;margin-left: 30%;" placeholder=""  name="CQuantity" id="CQuantity" required>
+	
+	<br></br><br></br>
+	
+
+	<input style="margin-left: 50%" type="submit" value="Post">
+	
+</div>
+
+
+</form>
+
+
+
+<div  id="Data_Uploaded" class="tabcontent">
+	
+	<a href="{{node_address}}/mine" target="_blank"><button class="button" style="margin-left: 40%;">Request to mine</button></a>
+	<a href="/"><button class="button" >Resync</button></a>
+
+	{% for post in posts %}
+
+	
+	<table id="customers">
+	
+		<tr>
+			<th colspan="2" style="text-align:center">Enterprise</th>
+			<th colspan="2" style="text-align:center">Lot Release</th>
+			<th colspan="2" style="text-align:center">CDC</th>
+		</tr>
+			<td>Product Name</td>
+			<td>{{post.content}}</td>
+			<td>Product Name</td>
+			<td>{{post.IPdtName}}</td>
+			<td>ID of Vaccin Recipient</td>
+			<td>{{post.CIdOfRecp}}</td>
+		<tr>
+			<td>Packaging Form</td>
+			<td>{{post.author}}</td>
+			<td>Dosage Form</td>
+			<td>{{post.IDosageForm}}</td>
+			<td>Gender of Recipient</td>
+			<td>{{post.CGenderOfRecp}}</td>
+		</tr>
+		<tr>
+			<td>Batch Number:</td>
+			<td>{{post.BatchNo}}</td>
+			<td>Specification</td>
+			<td>{{post.ISpec}}</td>
+			<td>Age of Vaccine Recipient</td>
+			<td>{{post.CAgeOfRecp}}</td>
+		</tr>
+		<tr>
+			<td>Production Date</td>
+			<td>{{post.PdtDate}}</td>
+			<td>Batch Number</td>
+			<td>{{post.IBatchNo}}</td>
+			<td>Product Name</td>
+			<td>{{post.CPdtName}}</td>
+		</tr>
+		<tr>
+			<td>Validity Period</td>
+			<td>{{post.ValPrd}}</td>
+			<td>Quality Standard</td>
+			<td>{{post.IQualStd}}</td>
+			<td>Batch Number</td>
+			<td>{{post.CBatchNo}}</td>
+		</tr>
+		<tr>
+			<td>Date of Packing</td>
+			<td>{{post.PkgDate}}</td>
+			<td>Inspection Procedure</td>
+			<td>{{post.IInspProc}}</td>
+			<td>Inoculation Address</td>
+			<td>{{post.CInocAdd}}</td>
+		</tr>
+		<tr>
+			<td>Packaging Time</td>
+			<td>{{post.PkgTime}}</td>
+			<td>Inspection Equipments</td>
+			<td>{{post.IInspEquip}}</td>
+			<td>Time of Inoculation</td>
+			<td>{{post.CInocTime}}</td>
+		</tr>
+		<tr>
+			<td>Packaging In Charge</td>
+			<td>{{post.PkgInchargeName}}</td>
+			<td>Batch Number of Test Solutions</td>
+			<td>{{post.IBtchNoOfSol}}</td>
+			<td>Date of Inoculation</td>
+			<td>{{post.CInocDate}}</td>
+		</tr>
+		<tr>
+			<td>Packaging Operator</td>
+			<td>{{post.PkgOpr}}</td>
+			<td>Batch Number of Test Medium</td>
+			<td>{{post.IBtchNoOfMed}}</td>
+			<td>Inoculation Dose</td>
+			<td>{{post.CInocDose}}</td>
+		</tr>
+		<tr>
+			<td>Packaging Material Name:</td>
+			<td>{{post.PkgMtrlName}}</td>
+			<td>Batch Number of Source</td>
+			<td>{{post.IBtchNoOfSrc}}</td>
+			<td>Inoculation Department</td>
+			<td>{{post.CInocDept}}</td>
+		</tr>
+		<tr>
+			<td>Packaging Material Batch</td>
+			<td>{{post.PkgMtrlNo}}</td>
+			<td>Batch Number of Standard Product:</td>
+			<td>{{post.IBtchNoOfStdPdt}}</td>
+			<td>Inoculation Doctor</td>
+			<td>{{post.CInocDoc}}</td>
+		</tr>
+		<tr>
+			<td>Inspection Record</td>
+			<td>{{post.InspRec}}</td>
+			<td>Information of Animals</td>
+			<td>{{post.IInfAnimals}}</td>
+			<td>State</td>
+			<td>{{post.CState}}</td>
+		</tr>
+		<tr>
+			<td>Packing Operation Report</td>
+			<td>{{post.PkgOpsDetails}}</td>
+			<td>Inspection Process</td>
+			<td>{{post.IInspProcess}}</td>
+			<td>District</td>
+			<td>{{post.CDist}}</td>
+		</tr>
+		<tr>
+			<td>Abnormal Reports</td>
+			<td>{{post.AbnormalReport}}</td>
+			<td>Inspection Results</td>
+			<td>{{post.IInspRes}}</td>
+			<td>Mandal</td>
+			<td>{{post.CMandal}}</td>
+		</tr>
+		<tr>
+			<td>Investigator Name</td>
+			<td>{{post.InvestigatorName}}</td>
+			<td>Date of Inspection</td>
+			<td>{{post.IDateOfInsp}}</td>
+			<td>Quantity</td>
+			<td>{{post.CQuantity}}</td>
+		</tr>
+		<tr>
+			<td>Final Checking Report</td>
+			<td>{{post.FinCheckRep}}</td>
+			<td>Inspector Details</td>
+			<td>{{post.IInspDetails}}</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>Name of Reviewer</td>
+			<td>{{post.IRevName}}</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>Date of Review</td>
+			<td>{{post.IDateOfRev}}</td>
+			<td></td>
+			<td></td>
+		</tr>
+    </table>
+	<br><br><br>
+	
+	{% endfor %}
+	
+
+	
+</div>
+	
+
+
+<style>
+
+
+.button{
+  border-radius: 18px;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+}
+
+.button{
+  background-color: #4CAF50; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button:hover{
+  background-color: white;
+  color: black;
+}
+
+
+input[type=submit]{
+
+  border-radius: 18px;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  margin: 4px 2px;
+  font-weight: bold;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: #4CAF50; 
+  color: black; 
+  border: 2px solid #4CAF50;
+
+}
+input[type=submit]:hover{
+  background-color: white;
+  color: black;
+}
+
+input[type=text] {
+  display: inline-block;
+  border: 2px solid red;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  transition: width 0.4s ease-in-out;
+  height: 25px;
+}
+input[type=text]:focus {
+  background-color: lightgreen;
+  width: 20%;
+}
+
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+
+</style>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+
+ {% endblock %}
+
+

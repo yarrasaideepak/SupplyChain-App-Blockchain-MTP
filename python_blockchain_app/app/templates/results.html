@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+	<style>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</style>
+	
+	
+	{% set testing = "Sorry, Data Requested Was Not Found" %}
+	{% set another = testing %}
+	{% set testing = "The Above is the Requested Data" %}
+
+	{% for post in posts %}
+	
+	{% if divison == "Enterprised" %}
+	{% if SearchName == post.content %}
+	{% if SearchBatch == post.BatchNo %}
+	
+	{% set another = testing %}
+	
+	
+	<table id="customers2">
+	
+		<tr>
+			<th colspan="2" style="text-align:center">Enterprise</th>
+		</tr>
+			<td>Product Name</td>
+			<td>{{post.content}}</td>
+		<tr>
+			<td>Packaging Form</td>
+			<td>{{post.author}}</td>
+		</tr>
+		<tr>
+			<td>Batch Number:</td>
+			<td>{{post.BatchNo}}</td>
+		</tr>
+		<tr>
+			<td>Production Date</td>
+			<td>{{post.PdtDate}}</td>
+		</tr>
+		<tr>
+			<td>Validity Period</td>
+			<td>{{post.ValPrd}}</td>
+		</tr>
+		<tr>
+			<td>Date of Packing</td>
+			<td>{{post.PkgDate}}</td>
+		</tr>
+		<tr>
+			<td>Packaging Time</td>
+			<td>{{post.PkgTime}}</td>
+		</tr>
+		<tr>
+			<td>Packaging In Charge</td>
+			<td>{{post.PkgInchargeName}}</td>
+		</tr>
+		<tr>
+			<td>Packaging Operator</td>
+			<td>{{post.PkgOpr}}</td>
+		</tr>
+		<tr>
+			<td>Packaging Material Name:</td>
+			<td>{{post.PkgMtrlName}}</td>
+		</tr>
+		<tr>
+			<td>Packaging Material Batch</td>
+			<td>{{post.PkgMtrlNo}}</td>
+		</tr>
+		<tr>
+			<td>Inspection Record</td>
+			<td>{{post.InspRec}}</td>
+		</tr>
+		<tr>
+			<td>Packing Operation Report</td>
+			<td>{{post.PkgOpsDetails}}</td>
+		</tr>
+		<tr>
+			<td>Abnormal Reports</td>
+			<td>{{post.AbnormalReport}}</td>
+		</tr>
+		<tr>
+			<td>Investigator Name</td>
+			<td>{{post.InvestigatorName}}</td>
+		</tr>
+		<tr>
+			<td>Final Checking Report</td>
+			<td>{{post.FinCheckRep}}</td>
+		</tr>
+    </table>
+	<br><br><br>
+	
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	
+	{% endfor %}
+	
+	
+	
+	{% for post in posts %}
+	
+	{% if divison == "lotreleased" %}
+	{% if SearchName == post.content %}
+	{% if SearchBatch == post.BatchNo %}
+	{% set another = testing %}
+	
+	<table id="customers2">
+	
+		<tr>
+			<th colspan="2" style="text-align:center">Lot Release</th>
+		</tr>
+			<td>Product Name</td>
+			<td>{{post.IPdtName}}</td>
+		<tr>
+			<td>Dosage Form</td>
+			<td>{{post.IDosageForm}}</td>
+					</tr>
+		<tr>
+			<td>Specification</td>
+			<td>{{post.ISpec}}</td>
+			
+		</tr>
+		<tr>
+			<td>Batch Number</td>
+			<td>{{post.IBatchNo}}</td>
+		</tr>
+		<tr>
+			<td>Quality Standard</td>
+			<td>{{post.IQualStd}}</td>
+		</tr>
+		<tr>
+			<td>Inspection Procedure</td>
+			<td>{{post.IInspProc}}</td>
+			
+		</tr>
+		<tr>
+			<td>Inspection Equipments</td>
+			<td>{{post.IInspEquip}}</td>
+		</tr>
+		<tr>
+			<td>Batch Number of Test Solutions</td>
+			<td>{{post.IBtchNoOfSol}}</td>
+		</tr>
+		<tr>
+			<td>Batch Number of Test Medium</td>
+			<td>{{post.IBtchNoOfMed}}</td>
+		</tr>
+		<tr>
+			<td>Batch Number of Source</td>
+			<td>{{post.IBtchNoOfSrc}}</td>
+		</tr>
+		<tr>
+			<td>Batch Number of Standard Product:</td>
+			<td>{{post.IBtchNoOfStdPdt}}</td>
+		</tr>
+		<tr>
+			<td>Information of Animals</td>
+			<td>{{post.IInfAnimals}}</td>
+		</tr>
+		<tr>
+			<td>Inspection Process</td>
+			<td>{{post.IInspProcess}}</td>
+		</tr>
+		<tr>
+			<td>Inspection Results</td>
+			<td>{{post.IInspRes}}</td>
+		</tr>
+		<tr>
+			<td>Date of Inspection</td>
+			<td>{{post.IDateOfInsp}}</td>
+		</tr>
+		<tr>
+			<td>Inspector Details</td>
+			<td>{{post.IInspDetails}}</td>
+		</tr>
+		<tr>
+			<td>Name of Reviewer</td>
+			<td>{{post.IRevName}}</td>
+		</tr>
+		<tr>
+			<td>Date of Review</td>
+			<td>{{post.IDateOfRev}}</td>
+		</tr>
+    </table>
+	<br><br><br>
+	
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	
+	{% endfor %}
+	
+	
+	
+	
+	{% for post in posts %}
+	
+	{% if divison == "cdc" %}
+	{% if SearchName == post.content %}
+	{% if SearchBatch == post.BatchNo %}
+	{% set another = testing %}
+	
+	<table id="customers2">
+	
+		<tr>
+			<th colspan="2" style="text-align:center">CDC</th>
+		</tr>
+			<td>ID of Vaccin Recipient</td>
+			<td>{{post.CIdOfRecp}}</td>
+		<tr>
+			<td>Gender of Recipient</td>
+			<td>{{post.CGenderOfRecp}}</td>
+		</tr>
+		<tr>
+			<td>Age of Vaccine Recipient</td>
+			<td>{{post.CAgeOfRecp}}</td>
+		</tr>
+		<tr>
+			<td>Product Name</td>
+			<td>{{post.CPdtName}}</td>
+		</tr>
+		<tr>
+			<td>Batch Number</td>
+			<td>{{post.CBatchNo}}</td>
+		</tr>
+		<tr>
+			<td>Inoculation Address</td>
+			<td>{{post.CInocAdd}}</td>
+		</tr>
+		<tr>
+			<td>Time of Inoculation</td>
+			<td>{{post.CInocTime}}</td>
+		</tr>
+		<tr>
+			<td>Date of Inoculation</td>
+			<td>{{post.CInocDate}}</td>
+		</tr>
+		<tr>
+			<td>Inoculation Dose</td>
+			<td>{{post.CInocDose}}</td>
+		</tr>
+		<tr>
+			<td>Inoculation Department</td>
+			<td>{{post.CInocDept}}</td>
+		</tr>
+		<tr>
+			<td>Inoculation Doctor</td>
+			<td>{{post.CInocDoc}}</td>
+		</tr>
+    </table>
+	<br><br><br>
+	
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	
+	{% endfor %}
+	
+	{{ another }}
+	
+	<!-- Table CSS -->
+	
+	<style>
+		#customers2 {
+		  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		  border-collapse: collapse;
+		 
+		  
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+
+		#customers2 td, #customers th {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		  text-align: center;
+		}
+
+		#customers2 tr:nth-child(even){background-color: #f2f2f2;}
+
+		#customers2 tr:hover {background-color: #ddd;}
+
+		#customers2 th {
+		  padding-top: 12px;
+		  padding-bottom: 12px;
+		  text-align: center;
+		  background-color: #4CAF50;
+		  color: white;
+		}
+	</style>
+
+{% endblock %}

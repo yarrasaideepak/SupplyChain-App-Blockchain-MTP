@@ -1,0 +1,400 @@
+
+{% block body %}
+<style>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</style>
+
+{% set found = namespace(value=0) %}
+
+
+	{% for post in posts %}
+	
+	{% if SName == post.CState %}
+	{% if DName == post.CDist %}
+	{% if MName == post.CMandal %}
+
+		{% set found.value = 1 %}
+
+
+
+	{% endif %}
+	{% endif %}
+	{% endif %}
+
+
+	{% endfor %}
+
+
+{% if found.value == 1 %}
+
+<form action="/SuccesfullyRegistered" method="post" onsubmit="return confirm('By clicking OK registration will be confirmed');">
+
+<div class="wrapper">
+    <div class="title">
+      Vaccine Registration Form
+    </div>
+    <div class="form">
+       <div class="inputfield">
+          <label >First Name</label>
+          <input type="text" class="input" name="FSTNAME" id="FSTNAME" required>
+       </div>  
+        <div class="inputfield">
+          <label>Last Name</label>
+          <input type="text" class="input" name="LSTNAME" id="LSTNAME" required>
+       </div>  
+       <div class="inputfield">
+          <label>Date of Birth</label>
+          <input type="date" class="input" name="DOB" id="DOB" required>
+       </div>  
+ 
+     <div class="inputfield">
+          <label>Marital Status</label>
+          <div class="custom_select">
+            <select name="MARTSTAT" id="MARTSTAT">
+              <option value="">Select</option>
+              <option value="married">Married</option>
+              <option value="unmarried">Unmarried</option>
+            </select>
+          </div>
+       </div> 
+
+        <div class="inputfield">
+          <label>Gender</label>
+          <div class="custom_select">
+            <select name="GENDER" id="GENDER" onchange="yesnoCheck(this);">
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+       </div> 
+	
+	<script>
+		function yesnoCheck(that) {
+    			if (that.value == "female") {
+  			document.getElementById("ifYes").style.display = "block";
+    			}	 
+			else {
+    	    		document.getElementById("ifYes").style.display = "none";
+    			}
+		}
+	</script>
+	
+	
+	<div id="ifYes" style="display: none;">
+		<div class="inputfield">
+          	<label>Pregnant</label>
+		<div class="custom_select">
+            	<select name="pregnant" id="pregnant" onchange="yesnoCheck(this);">
+              		<option value="">Select</option>
+              		<option value="YesPregnant">Yes</option>
+              		<option value="NoPregnant">No</option>
+            	</select>
+		<br>
+          	</div>
+		</div>
+	
+	</div>
+
+	<div class="inputfield">
+          <label>Frontline Warrior</label>
+          <div class="custom_select">
+            <select name="FrontWarrior" id="FrontWarrior" >
+              <option value="">Select</option>
+              <option value="FrontYes">Yes</option>
+              <option value="FrontNo">No</option>
+            </select>
+          </div>
+       </div>	
+	
+	<div class="inputfield">
+          <label>Day-to-Day Public Interaction Level</label>
+          <div class="custom_select">
+            <select name="PubInter" id="PubInter" >
+              <option value="">Select</option>
+              <option value="HighInter">High</option>
+              <option value="MidInter">Medium</option>
+              <option value="LowInter">Low</option>
+            </select>
+          </div>
+       </div>	
+	
+	<form>
+	<div class="inputfields">
+          <label>Select Applicable</label>
+          <div class="custom_selects">
+            <select name="SeleDise"  id="SeleDise" style="padding: 40px;width:100%" multiple>
+		<option value="0Dis" >None</option>
+		<option value="1Dis">Heart failure with hospital admission in past one year</option>
+		<option value="2Dis">Post Cardiac Transplant/Left Ventricular Assist Device (LVAD)</option>	
+		<option value="3Dis">Significant left ventricular systolic dysfunction (LVEF<40%)</option>
+		<option value="4Dis">Moderate or severe valvular heart disease</option>	
+		<option value="5Dis">Congenital heart disease with severe PAH or Idiopathic PAH</option>		
+		<option value="6Dis">Coronary Artery Disease with past CABG/PTCA/MI AND Hypertension/Diabetes on treatment</option>
+		<option value="7Dis">Angina AND Hypertension/Diabetes on treatment</option>
+		<option value="8Dis">CT/MRI documented stroke AND Hypertension/Diabetes on treatment</option>
+		<option value="9Dis">Pulmonary artery hypertension AND Hypertension/Diabetes on treatment</option>
+		<option value="10Dis">Diabetes (>10 years OR with complications) AND Hypertension on treatment</option>
+		<option value="11Dis">Kidney/ Liver/ Hematopoietic stem cell transplant: Recipient/On wait-list</option>
+		<option value="12Dis">End stage kidney disease on haemodialysis/CAPD</option>
+		<option value="13Dis">Current prolonged use of oral corticosteroids/immunosuppressant medications</option>
+		<option value="14Dis">Decompensated cirrhosis</option>
+		<option value="15Dis">Severe respiratory disease with hospitalisations in last two years/FEV1<50%</option>
+		<option value="16Dis">Lymphoma/ Leukaemia/ Myeloma</option>
+		<option value="17Dis">Diagnosis of any solid cancer on or after 1st July 2020 OR currently on any cancer therapy</option>
+		<option value="18Dis">Sickle Cell Disease/ Bone marrow failure/ Aplastic Anemia/ Thalassemia Major</option>
+		<option value="19Dis">Primary Immunodeficiency Diseases/ HIV infection</option>
+		
+		<option value="20Dis">Others</option>
+
+		<option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Persons with disabilities due to Intellectual disabilities/ Muscular Dystrophy</option> 
+            	<option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acid attack with involvement of respiratory system</option> 
+		<option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Persons with disabilities having high support needs</option>
+		<option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple disabilities including deaf-blindness</option>
+		
+            </select>
+          </div>
+       </div>	
+	</form>
+	
+	<div class="inputfield">
+          <label>Aadhaar Number</label>
+          <input type="text" class="input" name="ADDRNO" id="ADDRNO" required>
+       </div>	
+
+        <div class="inputfield">
+          <label>Email Address</label>
+          <input type="text" class="input" name="EMLADDR" id="EMLADDR" required>
+       </div> 
+
+      <div class="inputfield">
+          <label>Phone Number</label>
+          <input type="text" class="input" name="PHNO" id="PHNO" required>
+       </div> 
+      <div class="inputfield">
+          <label>Address</label>
+          <textarea class="textarea" name="ADDR" id="ADDR"></textarea>
+       </div> 
+      <div class="inputfield">
+          <label>Postal Code</label>
+          <input type="text" class="input" name="PSTCODE" id="PSTCODE" required>
+       </div> 
+      <div class="inputfield terms">
+          <label class="check">
+            <input type="checkbox" required>
+            <span class="checkmark"></span>
+          </label>
+          <p>Agreed to terms and conditions</p>
+       </div> 
+      <div class="inputfield">
+
+	
+	<input type="submit" value="Submit" class="btn"> 
+        
+
+      </div>
+    </div>
+	
+</div>
+
+      		
+	</form>
+
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+body{
+  background: #fec107;
+  padding: 0 10px;
+}
+.wrapper{
+  max-width: 1000px;
+  width: 100%;
+  background: #fff;
+  margin: 50px auto;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.125);
+  padding: 30px;
+}
+
+.wrapper .title{
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #fec107;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.wrapper .form{
+  width: 100%;
+}
+
+.wrapper .form .inputfield{
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper .form .inputfield label{
+   width: 200px;
+   color: #757575;
+   margin-right: 10px;
+  font-size: 14px;
+}
+
+.wrapper .form .inputfield .input,
+.wrapper .form .inputfield .textarea{
+  width: 100%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.wrapper .form .inputfield .textarea{
+  width: 100%;
+  height: 125px;
+  resize: none;
+}
+
+.wrapper .form .inputfield .custom_select{
+  position: relative;
+  width: 100%;
+  height: 37px;
+}
+
+.wrapper .form .inputfield .custom_select:before{
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  border: 8px solid;
+  border-color: #d5dbd9 transparent transparent transparent;
+  pointer-events: none;
+}
+
+.wrapper .form .inputfield .custom_select select{
+  -webkit-appearance: none;
+  -moz-appearance:   none;
+  appearance:        none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 1px solid #d5dbd9;
+  border-radius: 3px;
+}
+
+
+.wrapper .form .inputfield .input:focus,
+.wrapper .form .inputfield .textarea:focus,
+.wrapper .form .inputfield .custom_select select:focus{
+  border: 1px solid #fec107;
+}
+
+.wrapper .form .inputfield p{
+   font-size: 14px;
+   color: #757575;
+}
+.wrapper .form .inputfield .check{
+  width: 15px;
+  height: 15px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.wrapper .form .inputfield .check input[type="checkbox"]{
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.wrapper .form .inputfield .check .checkmark{
+  width: 15px;
+  height: 15px;
+  border: 1px solid #fec107;
+  display: block;
+  position: relative;
+}
+.wrapper .form .inputfield .check .checkmark:before{
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  width: 5px;
+  height: 2px;
+  border: 2px solid;
+  border-color: transparent transparent #fff #fff;
+  transform: rotate(-45deg);
+  display: none;
+}
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark{
+  background: #fec107;
+}
+
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{
+  display: block;
+}
+
+.wrapper .form .inputfield .btn{
+  width: 100%;
+   padding: 8px 10px;
+  font-size: 15px; 
+  border: 0px;
+  
+  background:  #fec107;
+  color: #fff;
+  color:black;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+.wrapper .form .inputfield .btn:hover{
+  background: #ffd658;
+}
+
+.wrapper .form .inputfield:last-child{
+  margin-bottom: 0;
+}
+
+@media (max-width:420px) {
+  .wrapper .form .inputfield{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .wrapper .form .inputfield label{
+    margin-bottom: 5px;
+  }
+  .wrapper .form .inputfield.terms{
+    flex-direction: row;
+  }
+}
+
+</style>
+	
+{% else %}
+	<p style="color:#fec107;font-size:30px;text-align: center;">Vaccine is not available in your location</p>
+{% endif %}
+
+
+{% endblock %}
+
